@@ -923,6 +923,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5031001014574975591, guid: f571f498357042541a6efa09c161fbf1, type: 3}
   m_PrefabInstance: {fileID: 13749358}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &551415073 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5896817444190321990, guid: c67cebb299a201c45905b3dfb7b0249b, type: 3}
+  m_PrefabInstance: {fileID: 1361621927}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a6dde00c9db2348814eac548a49e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
 --- !u!1001 &557514313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1738,6 +1749,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 5896817444190321990, guid: c67cebb299a201c45905b3dfb7b0249b, type: 3}
+      propertyPath: _startingState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5896817444190321990, guid: c67cebb299a201c45905b3dfb7b0249b, type: 3}
+      propertyPath: _isChasingEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8644869929971277808, guid: c67cebb299a201c45905b3dfb7b0249b, type: 3}
+      propertyPath: _enemyAI
+      value: 
+      objectReference: {fileID: 551415073}
     - target: {fileID: 8946329272397315288, guid: c67cebb299a201c45905b3dfb7b0249b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.27
@@ -2198,7 +2221,7 @@ Transform:
   m_GameObject: {fileID: 1815358470}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -7.2, y: 2.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

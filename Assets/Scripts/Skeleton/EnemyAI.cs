@@ -11,12 +11,12 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float _roamingTimerMax = 2f;
 
     [SerializeField] private bool _isChasingEnemy = false;
-    private float _chasingDistance = 4f;
-    private float _chasingSpeedMultiplayer = 2f;
+    [SerializeField] private float _chasingDistance = 4f;
+    [SerializeField] private float _chasingSpeedMultiplier = 2f;
 
     [SerializeField] private bool _isAttackingEnemy = false;
-    private float _attackingDistance = 2f;
-    private float _attackRate = 2f;
+    [SerializeField] private float _attackingDistance = 2f;
+    [SerializeField] private float _attackRate = 2f;
     private float _nextAttackTime = 0f;
 
     private NavMeshAgent _navMeshAgent;
@@ -27,6 +27,10 @@ public class EnemyAI : MonoBehaviour
 
     private float _roamingSpeed;
     private float _chasingSpeed;
+
+    private float _nextCheckDirectionTime = 0f;
+    private float _checkDirectionDuration = 0.1f;
+    private Vector3 _lastPosition;
 
     public event EventHandler OnEnemyAttack;
 
@@ -63,12 +67,13 @@ public class EnemyAI : MonoBehaviour
         _currentState = _startingState;
 
         _roamingSpeed = _navMeshAgent.speed;
-        _chasingSpeed = _navMeshAgent.speed * _chasingSpeedMultiplayer;
+        _chasingSpeed = _navMeshAgent.speed * _chasingSpeedMultiplier;
     }
 
     private void Update()
     {
         StateHandler();
+        MovementDirectionHandler();
     }
 
     private void StateHandler()
@@ -108,6 +113,11 @@ public class EnemyAI : MonoBehaviour
     private void ChasingTarget()
     {
         _navMeshAgent.SetDestination(Player.Instance.transform.position);
+    }
+
+    public float GetRoamingAnimationSpeed()
+    {
+        return _navMeshAgent.speed / _roamingSpeed;
     }
 
     private void CheckCurrentState()
@@ -162,11 +172,27 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    private void MovementDirectionHandler()
+    {
+        if(Time.time > _nextCheckDirectionTime)
+        {
+            if(IsRunning)
+            {
+                ChangeFacingDirection(_lastPosition, transform.position);
+            } else if(_currentState == State.Attacking)
+            {
+                ChangeFacingDirection(transform.position, Player.Instance.transform.position);
+            }
+
+            _lastPosition = transform.position;
+            _nextCheckDirectionTime = Time.time + _checkDirectionDuration;
+        }
+    }
+
     private void Roaming()
     {
         _startingPosition = transform.position;
         _roamPosition = GetRoamingPosition();
-        ChangeFacingDirection(_startingPosition, _roamPosition);
         _navMeshAgent.SetDestination(_roamPosition);
     }
 
