@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2739918489496990048}
   - component: {fileID: 4739890859536856289}
   - component: {fileID: 2909165391859953624}
+  - component: {fileID: 8690259324237664322}
   - component: {fileID: 5896817444190321990}
   - component: {fileID: 3966308681077215891}
   m_Layer: 0
@@ -132,6 +133,66 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!60 &8690259324237664322
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756354052713327056}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 3.18769, y: 0.8327227}
+      - {x: 3.5595653, y: 1.1139022}
+      - {x: 3.7026706, y: 1.5489559}
+      - {x: 3.5641909, y: 2.0249007}
+      - {x: 3.1654084, y: 2.3907402}
+      - {x: 2.678345, y: 2.5727994}
+      - {x: 1.2490659, y: 2.6316624}
+      - {x: 1.600981, y: 2.4751225}
+      - {x: 0.6243419, y: 1.1979916}
+      - {x: -0.013890207, y: 0.85640395}
+      - {x: 0.64876723, y: 0.55619437}
+      - {x: 1.0941635, y: 0.47380733}
+      - {x: 2.526455, y: 0.48906267}
+  m_UseDelaunayMesh: 0
 --- !u!114 &5896817444190321990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,9 +212,9 @@ MonoBehaviour:
   _isChasingEnemy: 1
   _chasingDistance: 4
   _chasingSpeedMultiplier: 2
-  _isAttackingEnemy: 0
+  _isAttackingEnemy: 1
   _attackingDistance: 2
-  _attackRate: 2
+  _attackRate: 1
 --- !u!114 &3966308681077215891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,3 +446,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkeletonVisual
   _enemyAI: {fileID: 5896817444190321990}
+  _enemyEntity: {fileID: 3966308681077215891}
