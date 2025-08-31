@@ -163,7 +163,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff6df9d8ccfb594caa1ddcdddee588d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyEntity
-  _maxHealth: 20
+  _maxHealth: 10
 --- !u!1 &1751246511145097392
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,3 +447,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkeletonVisual
   _enemyAI: {fileID: 5896817444190321990}
   _enemyEntity: {fileID: 3966308681077215891}
+  _enemyShadow: {fileID: 1751246511145097392}
