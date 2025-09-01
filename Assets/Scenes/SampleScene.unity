@@ -2174,6 +2174,7 @@ GameObject:
   - component: {fileID: 1815358475}
   - component: {fileID: 1815358476}
   - component: {fileID: 1815358471}
+  - component: {fileID: 1815358477}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2193,7 +2194,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798ca26897658ba4b83e2312c87e3ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  movingSpeed: 6
+  _movingSpeed: 5
+  _maxHealth: 10
+  _damageRecoveryTime: 0.5
 --- !u!4 &1815358473
 Transform:
   m_ObjectHideFlags: 0
@@ -2321,6 +2324,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.74948263, y: 1.7630525}
   m_EdgeRadius: 0
+--- !u!114 &1815358477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815358470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 608cef885aba22842a3eacc9ebb91a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KnockBack
+  _knockBackForce: 2
+  _knockBackMovingTimerMax: 0.3
 --- !u!4 &1887779118 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5031001014574975591, guid: f571f498357042541a6efa09c161fbf1, type: 3}

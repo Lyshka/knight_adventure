@@ -1,32 +1,42 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 [SelectionBase]
 public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
+    public event EventHandler OnPlayerDeath;
 
-    [SerializeField] private float movingSpeed = 5f;
+    [SerializeField] private float _movingSpeed = 5f;
+    [SerializeField] private int _maxHealth = 10;
+    [SerializeField] private float _damageRecoveryTime = 0.5f;
 
     private Vector2 inputVector;
-    private Rigidbody2D rb;
 
-    private float minMovingSpeed = 0.1f;
-    private bool isRunning = false;
+    private Rigidbody2D _rb;
+    private KnockBack _knockBack;
+
+    private float _minMovingSpeed = 0.1f;
+    private bool _isRunning = false;
+
+    private int _currentHealth;
+    private bool _canTakeDamage;
+    private bool _isAlive;
 
     private void Awake()
     {
         Instance = this;
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
+        _knockBack = GetComponent<KnockBack>();
     }
 
     private void Start()
     {
+        _currentHealth = _maxHealth;
+        _canTakeDamage = true;
+        _isAlive = true;
         GameInput.Instance.OnPlayerAttack += GameInput_OnPlayerAttack;
-    }
-
-    private void GameInput_OnPlayerAttack(object sender, System.EventArgs e)
-    {
-        ActiveWeapon.Instance.GetActiveWeapon().Attack();
     }
 
     private void Update()
@@ -37,26 +47,70 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_knockBack.IsGettingKnockedBack)
+        {
+            return;
+        }
+
         HandleMovement();
     }
 
-    private void HandleMovement()
-    {
-        rb.MovePosition(rb.position + inputVector * (movingSpeed * Time.fixedDeltaTime));
+    public bool IsAlive() => _isAlive;
 
-        if (Mathf.Abs(inputVector.x) > minMovingSpeed || Mathf.Abs(inputVector.y) > minMovingSpeed)
+    public void TakeDamage(Transform damageSource, int damage)
+    {
+        if (_canTakeDamage && _isAlive)
         {
-            isRunning = true;
+            _canTakeDamage = false;
+            _currentHealth = Mathf.Max(0, _currentHealth -= damage);
+            _knockBack.GetKnockBack(damageSource);
+
+            StartCoroutine(DamageRecoveryRoutine());
         }
-        else
+
+        DetectDeath();
+    }
+
+    private void DetectDeath()
+    {
+        if(_currentHealth == 0 && _isAlive)
         {
-            isRunning = false;
+            _isAlive = false;
+            _knockBack.StopKnockBackMovement();
+            GameInput.Instance.DisabledMovement();
+
+            OnPlayerDeath?.Invoke(this, EventArgs.Empty);
         }
+    }
+
+    private IEnumerator DamageRecoveryRoutine()
+    {
+        yield return new WaitForSeconds(_damageRecoveryTime);
+        _canTakeDamage = true;
     }
 
     public bool IsRunning()
     {
-        return isRunning;
+        return _isRunning;
+    }
+
+    private void GameInput_OnPlayerAttack(object sender, System.EventArgs e)
+    {
+        ActiveWeapon.Instance.GetActiveWeapon().Attack();
+    }
+
+    private void HandleMovement()
+    {
+        _rb.MovePosition(_rb.position + inputVector * (_movingSpeed * Time.fixedDeltaTime));
+
+        if (Mathf.Abs(inputVector.x) > _minMovingSpeed || Mathf.Abs(inputVector.y) > _minMovingSpeed)
+        {
+            _isRunning = true;
+        }
+        else
+        {
+            _isRunning = false;
+        }
     }
 
     public Vector3 GetPlayerScreenPosition()

@@ -6,6 +6,7 @@ public class PlayerVisual : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private const string IS_RUNNING = "IsRunning";
+    private const string IS_DIE = "IsDie";
 
     private void Awake()
     {
@@ -13,10 +14,24 @@ public class PlayerVisual : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    private void Start()
+    {
+        Player.Instance.OnPlayerDeath += Player_OnPlayerDeath;
+    }
+
+    private void Player_OnPlayerDeath(object sender, System.EventArgs e)
+    {
+        animator.SetBool(IS_DIE, true);
+    }
+
     private void Update()
     {
         animator.SetBool(IS_RUNNING, Player.Instance.IsRunning());
-        AdjustPlayerFacingDirection();
+
+        if (Player.Instance.IsAlive())
+        {
+            AdjustPlayerFacingDirection();
+        }
     }
 
     private void AdjustPlayerFacingDirection()
