@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff6df9d8ccfb594caa1ddcdddee588d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyEntity
-  _maxHealth: 10
+  _enemySO: {fileID: 11400000, guid: fdbce16d0d460644b83658e52dc154eb, type: 2}
 --- !u!1 &1751246511145097392
 GameObject:
   m_ObjectHideFlags: 0

@@ -122,4 +122,9 @@ public class Player : MonoBehaviour
 
         return playerScreenPosition;
     }
+
+    private void OnDestroy()
+    {
+        GameInput.Instance.OnPlayerAttack -= GameInput_OnPlayerAttack;
+    }
 }

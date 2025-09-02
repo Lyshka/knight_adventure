@@ -17,8 +17,11 @@ public class FlashBlink : MonoBehaviour
         defaultMaterial = spriteRenderer.material;
 
         isBlinking = true;
+    }
 
-        if(_damagableObject is Player)
+    private void Start()
+    {
+        if (_damagableObject is Player)
         {
             (_damagableObject as Player).OnFlashBlink += DamagableObject_OnFlashBlink;
         }
@@ -31,11 +34,11 @@ public class FlashBlink : MonoBehaviour
 
     private void Update()
     {
-        if(isBlinking)
+        if (isBlinking)
         {
             blinkTimer -= Time.deltaTime;
 
-            if(blinkTimer < 0)
+            if (blinkTimer < 0)
             {
                 SetDefaultMaterial();
             }
@@ -57,5 +60,13 @@ public class FlashBlink : MonoBehaviour
     {
         SetDefaultMaterial();
         isBlinking = false;
+    }
+
+    private void OnDestroy()
+    {
+        if(_damagableObject is Player)
+        {
+            (_damagableObject as Player).OnFlashBlink -= DamagableObject_OnFlashBlink;
+        }
     }
 }

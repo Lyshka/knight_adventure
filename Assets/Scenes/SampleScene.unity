@@ -1738,10 +1738,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
-    - target: {fileID: 3966308681077215891, guid: c67cebb299a201c45905b3dfb7b0249b, type: 3}
-      propertyPath: _enemySO
-      value: 
-      objectReference: {fileID: 11400000, guid: fdbce16d0d460644b83658e52dc154eb, type: 2}
     - target: {fileID: 8946329272397315288, guid: c67cebb299a201c45905b3dfb7b0249b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.61
@@ -2211,7 +2207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   _movingSpeed: 5
-  _maxHealth: 3
+  _maxHealth: 20
   _damageRecoveryTime: 0.5
 --- !u!4 &1815358473
 Transform:
@@ -2432,6 +2428,7 @@ GameObject:
   - component: {fileID: 2064681516}
   - component: {fileID: 2064681515}
   - component: {fileID: 2064681514}
+  - component: {fileID: 2064681517}
   m_Layer: 0
   m_Name: NavMeshSurface
   m_TagString: Untagged
@@ -2501,6 +2498,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2064681517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064681513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad09e80e7650b540bf2f69d5fb3080f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NavMeshSurfaceManagement
 --- !u!1001 &2096909162
 PrefabInstance:
   m_ObjectHideFlags: 0
