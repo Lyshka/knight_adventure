@@ -2103,9 +2103,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21547b251265c9643a8ad527cf9afbe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlashBlink
-  _damagableObject: {fileID: 1815358471}
-  _blinkMaterial: {fileID: 2100000, guid: 423240b355e356f42a14198ec86cfcfc, type: 2}
-  _blinkDuration: 0.2
+  damageableObject: {fileID: 1815358471}
+  blinkMaterial: {fileID: 2100000, guid: 423240b355e356f42a14198ec86cfcfc, type: 2}
+  blinkDuration: 0.2
 --- !u!4 &1733589430 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5031001014574975591, guid: f571f498357042541a6efa09c161fbf1, type: 3}
@@ -2206,9 +2206,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798ca26897658ba4b83e2312c87e3ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  _movingSpeed: 5
-  _maxHealth: 20
-  _damageRecoveryTime: 0.5
+  movingSpeed: 5
+  maxHealth: 3
+  damageRecoveryTime: 0.5
 --- !u!4 &1815358473
 Transform:
   m_ObjectHideFlags: 0
@@ -2348,8 +2348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608cef885aba22842a3eacc9ebb91a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KnockBack
-  _knockBackForce: 2
-  _knockBackMovingTimerMax: 0.3
+  knockBackForce: 2
+  knockBackMovingTimerMax: 0.2
 --- !u!4 &1887779118 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5031001014574975591, guid: f571f498357042541a6efa09c161fbf1, type: 3}

@@ -6,12 +6,12 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyAI))]
 public class EnemyEntity : MonoBehaviour
 {
-    [SerializeField] private EnemySO _enemySO;
+    [SerializeField] private EnemySO enemySO;
 
     public event EventHandler OnTakeHit;
     public event EventHandler OnDeath;
 
-    private int _currrentHealth;
+    private int _currentHealth;
 
     private PolygonCollider2D _polygonCollider2D;
     private BoxCollider2D _boxCollider2D;
@@ -26,20 +26,20 @@ public class EnemyEntity : MonoBehaviour
 
     private void Start()
     {
-        _currrentHealth = _enemySO.enemyHealth;
+        _currentHealth = enemySO.enemyHealth;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.transform.TryGetComponent(out Player player))
         {
-            player.TakeDamage(transform, _enemySO.enemyDamageAmount);
+            player.TakeDamage(transform, enemySO.enemyDamageAmount);
         }
     }
 
     public void TakeImage(int damage)
     {
-        _currrentHealth -= damage;
+        _currentHealth -= damage;
 
         OnTakeHit?.Invoke(this, EventArgs.Empty);
 
@@ -58,7 +58,7 @@ public class EnemyEntity : MonoBehaviour
 
     private void DetectDeath()
     {
-        if (_currrentHealth <= 0)
+        if (_currentHealth <= 0)
         {
             _boxCollider2D.enabled = false;
             _polygonCollider2D.enabled = false;
