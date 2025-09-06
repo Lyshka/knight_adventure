@@ -2206,9 +2206,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798ca26897658ba4b83e2312c87e3ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  movingSpeed: 5
-  maxHealth: 3
+  movingSpeed: 6
+  maxHealth: 100
   damageRecoveryTime: 0.5
+  dashSpeed: 4
+  dashTime: 0.2
 --- !u!4 &1815358473
 Transform:
   m_ObjectHideFlags: 0
@@ -2348,8 +2350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608cef885aba22842a3eacc9ebb91a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KnockBack
-  knockBackForce: 2
-  knockBackMovingTimerMax: 0.2
+  knockBackForce: 3
+  knockBackMovingTimerMax: 0.3
 --- !u!4 &1887779118 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5031001014574975591, guid: f571f498357042541a6efa09c161fbf1, type: 3}
